@@ -1,32 +1,36 @@
-// Функція для виведення результату на екран
-function displayResult(message) {
-  const resultDiv = document.getElementById('results');
-  const p = document.createElement('p');
-  p.textContent = message;
-  resultDiv.appendChild(p);
-}
-
-// Об'єднана функція для виводу і в консоль, і на екран
-function output(message) {
-  console.log(message);
-  displayResult(message);
-}
-
-function makeArray(firstArray, secondArray, maxLength) {
-  const mergedArray = firstArray.concat(secondArray);
-
-  if (mergedArray.length > maxLength) {
-    return mergedArray.slice(0, maxLength);
+function calcAverageCalories(days) {
+  if (days.length === 0) {
+    return 0;
   }
 
-  return mergedArray;
+  const totalCalories = days.reduce((sum, day) => sum + day.calories, 0);
+  return totalCalories / days.length;
 }
 
+console.log(
+  calcAverageCalories([
+    { day: "monday", calories: 3010 },
+    { day: "tuesday", calories: 3200 },
+    { day: "wednesday", calories: 3120 },
+    { day: "thursday", calories: 2900 },
+    { day: "friday", calories: 3450 },
+    { day: "saturday", calories: 3280 },
+    { day: "sunday", calories: 3300 }
+  ])
+); // 3180
 
-// Якщо потрібно тільки в консоль, то потрібно замінити output на console.log нижче і видалити перші дві функції
-output(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ["Mango", "Poly", "Ajax"]
-output(makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)); // ["Mango", "Poly", "Houston", "Ajax"]
-output(makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)); // ["Mango", "Ajax", "Chelsea"]
-output(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)); // ["Earth", "Jupiter"]
-output(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)); // ["Earth", "Jupiter", "Neptune", "Uranus"]
-output(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)); // []
+console.log(
+  calcAverageCalories([
+    { day: "monday", calories: 2040 },
+    { day: "tuesday", calories: 2270 },
+    { day: "wednesday", calories: 2420 },
+    { day: "thursday", calories: 1900 },
+    { day: "friday", calories: 2370 },
+    { day: "saturday", calories: 2280 },
+    { day: "sunday", calories: 2610 }
+  ])
+); // 2270
+
+console.log(
+  calcAverageCalories([])
+); // 0

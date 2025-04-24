@@ -1,23 +1,20 @@
-// Функція для виведення результату на екран
-function displayResult(message) {
-  const resultDiv = document.getElementById('results');
-  const p = document.createElement('p');
-  p.textContent = message;
-  resultDiv.appendChild(p);
+function isEnoughCapacity(products, containerSize) {
+  const totalQuantity = Object.values(products).reduce((sum, quantity) => sum + quantity, 0);
+  return totalQuantity <= containerSize;
 }
 
-// Об'єднана функція для виводу і в консоль, і на екран
-function output(message) {
-  console.log(message);
-  displayResult(message);
-}
+console.log(
+  isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8)
+); // true
 
-function slugify(title) {
-  return title.toLowerCase().split(" ").join("-");
-}
+console.log(
+  isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12)
+); // false
 
-// Якщо потрібно тільки в консоль, то потрібно замінити output на console.log нижче і видалити перші дві функції
-output(slugify("Arrays for beginners")); // "arrays-for-beginners"
-output(slugify("English for developer")); // "english-for-developer"
-output(slugify("Ten secrets of JavaScript")); // "ten-secrets-of-javascript"
-output(slugify("How to become a JUNIOR developer in TWO WEEKS")); // "how-to-become-a-junior-developer-in-two-weeks"
+console.log(
+  isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14)
+); // true
+
+console.log(
+  isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7)
+); // false

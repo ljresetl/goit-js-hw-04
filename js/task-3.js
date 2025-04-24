@@ -1,32 +1,24 @@
-// Функція для виведення результату на екран
-function displayResult(message) {
-  const resultDiv = document.getElementById('results');
-  const p = document.createElement('p');
-  p.textContent = message;
-  resultDiv.appendChild(p);
-}
+const profile = {
+  username: "Jacob",
+  playTime: 300,
 
-// Об'єднана функція для виводу і в консоль, і на екран
-function output(message) {
-  console.log(message);
-  displayResult(message);
-}
+  changeUsername(newName) {
+    this.username = newName;
+  },
 
-function filterArray(numbers, value) {
-  const result = [];
+  updatePlayTime(hours) {
+    this.playTime += hours;
+  },
 
-  for (const number of numbers) {
-    if (number > value) {
-      result.push(number);
-    }
+  getInfo() {
+    return `${this.username} has ${this.playTime} active hours!`;
   }
+};
 
-  return result;
-}
+console.log(profile.getInfo()); // "Jacob has 300 active hours!"
 
-// Якщо потрібно тільки в консоль, то потрібно замінити output на console.log нижче і видалити перші дві функції
-output(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
-output(filterArray([1, 2, 3, 4, 5], 4)); // [5]
-output(filterArray([1, 2, 3, 4, 5], 5)); // []
-output(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
-output(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
+profile.changeUsername("Marco");
+console.log(profile.getInfo()); // "Marco has 300 active hours!"
+
+profile.updatePlayTime(20);
+console.log(profile.getInfo()); // "Marco has 320 active hours!"
