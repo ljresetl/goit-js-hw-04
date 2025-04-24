@@ -1,3 +1,18 @@
+// Функція для виведення результату на екран
+function displayResult(message) {
+  const resultDiv = document.getElementById('results');
+  const p = document.createElement('p');
+  p.textContent = message;
+  resultDiv.appendChild(p);
+}
+
+// Об'єднана функція для виводу і в консоль, і на екран
+function output(message) {
+  console.log(message);  // Виводимо в консоль
+  displayResult(message); // Виводимо на екран
+}
+
+// Об'єкт профілю
 const profile = {
   username: "Jacob",
   playTime: 300,
@@ -15,10 +30,11 @@ const profile = {
   }
 };
 
-console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+// Виведення інформації на екран і в консоль
+output(profile.getInfo()); // "Jacob has 300 active hours!"
 
 profile.changeUsername("Marco");
-console.log(profile.getInfo()); // "Marco has 300 active hours!"
+output(profile.getInfo()); // "Marco has 300 active hours!"
 
 profile.updatePlayTime(20);
-console.log(profile.getInfo()); // "Marco has 320 active hours!"
+output(profile.getInfo()); // "Marco has 320 active hours!"

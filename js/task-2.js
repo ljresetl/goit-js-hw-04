@@ -1,3 +1,18 @@
+// Функція для виведення результату на екран
+function displayResult(message) {
+  const resultDiv = document.getElementById('results');
+  const p = document.createElement('p');
+  p.textContent = message;
+  resultDiv.appendChild(p);
+}
+
+// Об'єднана функція для виводу і в консоль, і на екран
+function output(message) {
+  console.log(message);  // Виводимо в консоль
+  displayResult(message); // Виводимо на екран
+}
+
+// Функція для обчислення середньої кількості калорій
 function calcAverageCalories(days) {
   if (days.length === 0) {
     return 0;
@@ -7,7 +22,8 @@ function calcAverageCalories(days) {
   return totalCalories / days.length;
 }
 
-console.log(
+// Виведення результатів
+output(
   calcAverageCalories([
     { day: "monday", calories: 3010 },
     { day: "tuesday", calories: 3200 },
@@ -19,7 +35,7 @@ console.log(
   ])
 ); // 3180
 
-console.log(
+output(
   calcAverageCalories([
     { day: "monday", calories: 2040 },
     { day: "tuesday", calories: 2270 },
@@ -31,6 +47,6 @@ console.log(
   ])
 ); // 2270
 
-console.log(
+output(
   calcAverageCalories([])
 ); // 0
