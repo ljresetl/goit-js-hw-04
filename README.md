@@ -1,67 +1,61 @@
-Формат здачі: Домашня робота містить два посилання: на вихідні файли та робочу сторінку на GitHub Pages.
+Критерії приймання Час швидко летить, правда ж?
 
-Задача 1. Генератор slug
+Нещодавно ти й уявленя не мав, що то за об’єкти, а тепер вже знаєш як:
 
-Виконуй це завдання у файлі task-1.js
+створити об'єкт у JavaScript додати та змінити значення властивостей об'єкта реалізувати перебирання об’єкту працювати з масивом однотипних об'єктів звертатися до властивості об'єкта в його методах використовувати spread і rest Саме час виконати завдання і остаточно закріпити ці вміння!
 
-Перш, ніж розв’язувати задачу, давай визначимося із новим терміном!
+Домашнє завдання №4 Створи репозиторій goit-js-hw-04 та склонюй його собі на комп’ютер. У папці goit-js-hw-04 створи структуру проєкта, як показано на схемі нижче. Зверни увагу! Імена файлів та папок, а також їх структура вкладеності, мають відповідати вказаній схемі. В іншому разі робота не буде прийнята.
 
-Термін slug — це зрозумілий людині унікальний ідентифікатор, який використовується у веб розробці для створення читабельних URL-адрес.
+Структура репозиторія Прочитай кожне завдання і виконай його у відповідному файлі. Переконайся, що код відформатований за допомогою Prettier, а в консолі відсутні помилки й попередження під час відкриття живої сторінки завдання. Здай домашнє завдання на перевірку. Формат здачі: Домашня робота містить два посилання: на вихідні файли та робочу сторінку на GitHub Pages.
 
-Наприклад, замість того, щоб користувач побачив в адресному рядку mysite.com/posts/1q8fh74tx, можна зробити slug із назви статті. У результаті адреса буде приємнішою для сприйняття: mysite.com/posts/arrays-for-beginners.
+Задача 1. Пакування товарів Виконуй це завдання у файлі task-1.js Напиши функцію isEnoughCapacity(products, containerSize), яка обчислює, чи помістяться всі товари в контейнер при пакуванні.
 
-Slug — це завжди рядок у нижньому регістрі, слова якого розділені тире.
+Функція оголошує два параметри:
 
-З цим розібралися? А тепер давай нарешті виконувати задачу!
+products — об’єкт, у якому ключі містять назви товарів, а їхні значення — кількість цих товарів. Наприклад, { apples: 2, grapes: 4 }. containerSize — число, максимальна кількість одиниць товарів, яку в себе може вмістити контейнер. Функція має повернути результат перевірки, чи помістяться всі товари в контейнер. Тобто порахувати загальну кількість товарів в об’єкті products і повернути true, якщо вона менше або дорівнює containerSize, і false, якщо ні.
 
-Напиши функцію slugify(title), яка приймає заголовок статті, параметр title і повертає slug, створений із цього рядка.
+Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її викликів.
 
-Значенням параметра title будуть рядки, слова яких розділені лише пробілами. Усі символи slug повинні бути в нижньому регістрі. Усі слова slug повинні бути розділені тире. Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
+console.log( isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8) ); // true
 
-console.log(slugify("Arrays for beginners")); // "arrays-for-beginners" console.log(slugify("English for developer")); // "english-for-developer" console.log(slugify("Ten secrets of JavaScript")); // "ten-secrets-of-javascript" console.log(slugify("How to become a JUNIOR developer in TWO WEEKS")); // "how-to-become-a-junior-developer-in-two-weeks"
+console.log( isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12) ); // false
 
-Залиш цей код для перевірки ментором.
+console.log( isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14) ); // true
 
-На що буде звертати увагу ментор при перевірці:
-
-Оголошена функція slugify(title) Виклик slugify("Arrays for beginners") повертає "arrays-for-beginners" Виклик slugify("English for developer") повертає "english-for-developer" Виклик slugify("Ten secrets of JavaScript") повертає "ten-secrets-of-javascript" Виклик slugify("How to become a JUNIOR developer in TWO WEEKS") повертає "how-to-become-a-junior-developer-in-two-weeks"
-
-Задача 2. Композиція масивів
-
-Виконуй це завдання у файлі task-2.js
-
-Напиши функцію під назвою makeArray, яка приймає три параметри: firstArray (масив), secondArray (масив) і maxLength (число). Функція повинна створювати новий масив, який містить усі елементи з firstArray, а потім усі елементи з secondArray.
-
-Якщо кількість елементів у новому масиві перевищує maxLength, функція повинна повернути копію масиву з довжиною maxLength елементів. В іншому випадку функція повинна повернути весь новий масив.
-
-Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
-
-console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ["Mango", "Poly", "Ajax"] console.log(makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)); // ["Mango", "Poly", "Houston", "Ajax"] console.log(makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)); // ["Mango", "Ajax", "Chelsea"] console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)); // ["Earth", "Jupiter"] console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)); // ["Earth", "Jupiter", "Neptune", "Uranus"] console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)); // []
+console.log( isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7) ); // false
 
 Залиш цей код для перевірки ментором.
 
-На що буде звертати увагу ментор при перевірці:
+На що буде звертати увагу ментор при перевірці: Оголошена функція isEnoughCapacity(products, containerSize) Виклик isEnoughCapacity({ apples: 2, grapes: 3, carrots: 1 }, 8) повертає true Виклик isEnoughCapacity({ apples: 4, grapes: 6, lime: 16 }, 12) повертає false Виклик isEnoughCapacity({ apples: 1, lime: 5, tomatoes: 3 }, 14) повертає true Виклик isEnoughCapacity({ apples: 18, potatoes: 5, oranges: 2 }, 7) повертає false Задача 2. Розрахунок калорій Виконуй це завдання у файлі task-2.js Напиши функцію calcAverageCalories(days), яка повертає середньодобове значення кількості калорій, які спортсмен споживав протягом тижня. Функція очікує один параметр: days — масив об’єктів. Кожен об’єкт описує день тижня та кількість калорій calories, спожитих спортсменом, у цей день. Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її викликів.
 
-Оголошена функція makeArray(firstArray, secondArray, maxLength) Виклик makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3) повертає ["Mango", "Poly", "Ajax"] Виклик makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4) повертає ["Mango", "Poly", "Houston", "Ajax"] Виклик makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3) повертає ["Mango", "Ajax", "Chelsea"] Виклик makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2) повертає ["Earth", "Jupiter"] Виклик makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4) повертає ["Earth", "Jupiter", "Neptune", "Uranus"] Виклик makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0) повертає [] Виклик функції makeArray() з випадковими масивами і випадковим числом повертає правильний масив
+console.log( calcAverageCalories([ { day: "monday", calories: 3010 }, { day: "tuesday", calories: 3200 }, { day: "wednesday", calories: 3120 }, { day: "thursday", calories: 2900 }, { day: "friday", calories: 3450 }, { day: "saturday", calories: 3280 }, { day: "sunday", calories: 3300 } ]) ); // 3180
 
-Задача 3. Фільтрація масиву чисел
+console.log( calcAverageCalories([ { day: "monday", calories: 2040 }, { day: "tuesday", calories: 2270 }, { day: "wednesday", calories: 2420 }, { day: "thursday", calories: 1900 }, { day: "friday", calories: 2370 }, { day: "saturday", calories: 2280 }, { day: "sunday", calories: 2610 } ]) ); // 2270
 
-Виконуй це завдання у файлі task-3.js
-
-Напиши функцію filterArray(numbers, value), яка приймає масив чисел (numbers) та значення (value) як параметри. Функція повинна повертати новий масив лише тих чисел із масиву numbers, які більші за значення value.
-
-Усередині функції:
-
-Створи порожній масив, у який будеш додавати підходящі числа. Використай цикл для ітерації кожного елемента масиву numbers. Використовуй умовний оператор if усередині циклу для перевірки кожного елемента и додавання до свого масиву. Поверни свій новий масив з підходящими числами як результат.
-
-Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
-
-console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5] console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5] console.log(filterArray([1, 2, 3, 4, 5], 5)); // [] console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76] console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
+console.log( calcAverageCalories([]) ); // 0
 
 Залиш цей код для перевірки ментором.
 
-На що буде звертати увагу ментор при перевірці:
+На що буде звертати увагу ментор при перевірці: Оголошена функція calcAverageCalories(days) Такий виклик функції calcAverageCalories повертає 3180 calcAverageCalories([ { day: "monday", calories: 3010 }, { day: "tuesday", calories: 3200 }, { day: "wednesday", calories: 3120 }, { day: "thursday", calories: 2900 }, { day: "friday", calories: 3450 }, { day: "saturday", calories: 3280 }, { day: "sunday", calories: 3300 } ])
 
-Оголошена функція filterArray(numbers, value) Виклик функції filterArray([1, 2, 3, 4, 5], 3) повертає [4, 5] Виклик функції filterArray([1, 2, 3, 4, 5], 4) повертає [5] Виклик функції filterArray([1, 2, 3, 4, 5], 5) повертає [] Виклик функції filterArray([12, 24, 8, 41, 76], 38) повертає [41, 76] Виклик функції filterArray([12, 24, 8, 41, 76], 20) повертає [24, 41, 76] Виклик функції filterArray() з випадковим масивом і числом повертає правильний масив
+Такий виклик функції calcAverageCalories повертає 2270 calcAverageCalories([ { day: "monday", calories: 2040 }, { day: "tuesday", calories: 2270 }, { day: "wednesday", calories: 2420 }, { day: "thursday", calories: 1900 }, { day: "friday", calories: 2370 }, { day: "saturday", calories: 2280 }, { day: "sunday", calories: 2610 } ])
 
-Зроблено за допомогою чату GPT!
+Такий виклик функції calcAverageCalories повертає 0 calcAverageCalories([])
+
+Задача 3. Профіль гравця Виконуй це завдання у файлі task-3.js Об’єкт profile описує профіль користувача на ігровій платформі. У його властивостях зберігається ім’я профілю username та кількість активних годин playTime, проведених у грі.
+
+const profile = { username: "Jacob", playTime: 300, };
+
+Доповни об’єкт profile методами для роботи з його властивостями.
+
+Метод changeUsername(newName) повинен приймати рядок (нове ім’я) в параметр newName та змінювати значення властивості username на нове. Нічого не повертає. Метод updatePlayTime(hours) повинен приймати число (кількість годин) у параметр hours та збільшити на нього значення властивості playTime. Нічого не повертає. Метод getInfo() має повертати рядок формату <Username> has <amount> active hours!, де <Username> — це ім’я профілю, а <amount> — кількість ігрових годин. Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
+
+console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+
+profile.changeUsername("Marco"); console.log(profile.getInfo()); // "Marco has 300 active hours!"
+
+profile.updatePlayTime(20); console.log(profile.getInfo()); // "Marco has 320 active hours!"
+
+Залиш цей код для перевірки ментором.
+
+На що буде звертати увагу ментор при перевірці: Оголошена змінна profile Значення змінної profile — це об’єкт з властивостями username, playTime, getInfo, changeUsername і updatePlayTime Значення властивості getInfo — це функція Значення властивості changeUsername — це функція Значення властивості updatePlayTime — це функція Для звернення до властивостей об’єкта в його методах використовується this
